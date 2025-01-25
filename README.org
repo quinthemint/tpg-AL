@@ -1,6 +1,8 @@
+This is an existing project which I'm attempting to add support for fuzzy logic to  
+
+
 
 * Introduction
-LOL
 This is the source code for [[https://www.umsu.de/trees]], a website that implements
 a tableau prover for classical propositional and predicate logic, as well as
 some modal logics. The prover is written in Javascript and runs entirely in the
