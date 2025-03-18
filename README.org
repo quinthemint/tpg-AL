@@ -5,7 +5,7 @@ I successfully added support for propositional logic trees, but created an infin
 quantifier or possibility operator present.
 
 What follows is the readme for the original project.
-*
+-----
 
 * Introduction
 This is the source code for [[https://www.umsu.de/trees]], a website that implements
