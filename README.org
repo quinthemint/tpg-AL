@@ -1,6 +1,11 @@
-This is an existing project which I'm attempting to add support for fuzzy logic to  
+* TPG - Open Trees
 
+This is a project for an advanced logic course that aims to add open tree support to Wolfgang Schwarz's tree proof generator. 
+I successfully added support for propositional logic trees, but created an infinite loop case in open trees with an existential 
+quantifier or possibility operator present.
 
+What follows is the readme for the original project.
+*
 
 * Introduction
 This is the source code for [[https://www.umsu.de/trees]], a website that implements
