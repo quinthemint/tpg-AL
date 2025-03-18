@@ -379,7 +379,9 @@ function NegatedFormula(sub) {
 }
 
 NegatedFormula.computeType = function(sub) {
-    if (sub.operator == '¬') return 'doublenegation';
+    if (sub.operator == '¬'){
+        return 'doublenegation';
+    } 
     switch (sub.type) {
     case 'literal': { return 'literal'; }
     case 'alpha': { return 'beta'; }

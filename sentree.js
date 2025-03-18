@@ -14,7 +14,9 @@ function SenTree(fvTree, parser) {
     this.fvParser = fvTree.parser; // parser with added symbols used in fvtree
 
     this.markEndNodesClosed();
+    this.markEndNodesOpen();
     this.transferNodes();
+   
     log(this.toString());
     this.removeUnusedNodes();
     log(this.toString());
@@ -30,6 +32,17 @@ SenTree.prototype.markEndNodesClosed = function() {
         branch.nodes[branch.nodes.length-1].closedEnd = true;
     }
 }
+
+SenTree.prototype.markEndNodesOpen = function() {
+    for (var i = 0; i < this.fvTree.openBranches.length; i++) {
+        var branch = this.fvTree.openBranches[i];
+        if (branch.nodes.length > 0) {
+            let lastNode = branch.nodes[branch.nodes.length - 1];
+            console.log("Marking last node as open:", lastNode.formula.string);
+            lastNode.openEnd = true;
+        }
+    }
+};
 
 SenTree.prototype.findComplementaryNodes = function() {
     for (var i=0; i<this.fvTree.closedBranches.length; i++) {
@@ -139,6 +152,8 @@ SenTree.prototype.transferNodes = function() {
     // steps have been completed):
     for (var i=0; i<this.nodes.length; i++) {
         var node = this.nodes[i];
+        // console.log(node.used);
+        // console.log(node.formula.type);
         if (node.used && node.formula.type == 'doublenegation') {
             var par = node; // par is the node after which we insert the DNE nodes
             while (par.children[0] && par.children[0].expansionStep == par.expansionStep) {

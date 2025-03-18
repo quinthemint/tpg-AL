@@ -165,6 +165,11 @@ function startProof() {
                 document.getElementById("model").style.display = "block";
                 document.getElementById("model").innerHTML = "<b>Countermodel:</b><br>" +
                     this.counterModel.toHTML();
+                    
+                document.getElementById("rootAnchor").style.display = "block";
+                self.painter = new TreePainter(sentree, document.getElementById("rootAnchor"));
+                self.painter.finished = function() { addExportButtons(); }
+                self.painter.paintTree();
             }
             return; 
         }

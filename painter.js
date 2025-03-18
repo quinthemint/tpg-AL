@@ -1,3 +1,5 @@
+//TODO add open nodes at the end
+
 function TreePainter(senTree, rootAnchor) {
     // Constructor for a tree painter. rootAnchor is the HTML element into which
     // the tree will be written.
@@ -29,11 +31,17 @@ TreePainter.prototype.paintTree = function() {
     }
     var paintNodes = this.tree.getExpansion(node);
     log("expansion: " + paintNodes);
-    for (var i=0; i<paintNodes.length; i++) {
+    for (var i = 0; i < paintNodes.length; i++) {
         this.paint(paintNodes[i]);
+        
         if (paintNodes[i].closedEnd) {
             log("painting close marker");
             this.paint(this.makeCloseMarkerNode(paintNodes[i]));
+        }
+        
+        if (paintNodes[i].openEnd) {
+            log("painting open marker");
+            this.paint(this.makeOpenMarkerNode(paintNodes[i]));
         }
     }
     this.highlight(paintNodes, node.fromNodes);
@@ -175,6 +183,17 @@ TreePainter.prototype.makeNodeDiv = function(node) {
 TreePainter.prototype.makeCloseMarkerNode = function(closingNode) {
     var node = new Node();
     node.formula = "<b>x</b>";
+    node.parent = closingNode;
+    node.fromNodes = [];
+    node.children = [];
+    node.isCloseMarkerNode = true;
+    node.closedBy = closingNode.closedBy;
+    return node;
+}
+
+TreePainter.prototype.makeOpenMarkerNode = function(closingNode) {
+    var node = new Node();
+    node.formula = "<b>◯</b>";
     node.parent = closingNode;
     node.fromNodes = [];
     node.children = [];
