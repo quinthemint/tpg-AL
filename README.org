@@ -4,6 +4,8 @@ This is a project for an advanced logic course that aims to add open tree suppor
 I successfully added support for propositional logic trees, but created an infinite loop case in open trees with an existential 
 quantifier or possibility operator present.
 
+Everything here works locally. To use this version of the tpg, clone this repo and open the index.html path in a browser.
+
 What follows is the readme for the original project.
 -----
 
